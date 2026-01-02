@@ -58,3 +58,22 @@ window.addEventListener("scroll", function () {
     this.document.body.classList.remove("sticky");
   }
 });
+fetch("/api/getMenu")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Failed to fetch menu");
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Menu from Azure:", data);
+
+    // Example: you can later display this in UI
+    // renderMenu(data);
+  })
+  .catch(error => {
+    console.error("Error fetching menu:", error);
+  });
+
+
+
